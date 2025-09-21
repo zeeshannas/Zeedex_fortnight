@@ -13,7 +13,9 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         // CSRF protection me exception add karo
         $middleware->validateCsrfTokens(except: [
-            'crud/*'
+            'crud/*',
+            'api/products',        // list
+            'api/products/*',      // single product (update/delete)
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
